@@ -14,16 +14,19 @@ one of the following areas:
 3. **Unmaintained** or Abandoned (many open/unaddressed issues on GitHub)
 4. **Unclear** code (written without [*shoshin*](http://en.wikipedia.org/wiki/Shoshin))
 
+![too many features](http://i.imgur.com/ap0tuHe.gif)
+
 
 ## What?
 
 Given an initial directory (e.g. the [Current Working Directory](http://en.wikipedia.org/wiki/Working_directory)) give me a
 list of all the "child" directories.
 
-
 ## How?
 
-Clear code goes here...
+```js
+listdirs(dir, callback(list));
+```
 
 
 ## Research
