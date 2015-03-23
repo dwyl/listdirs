@@ -46,7 +46,7 @@ test(cyan('Return error when supplied invalid base directory'), function (t) {
 var emptydir = path.join(__dirname +"/fixture/foo/bar/baz/empty");
 // console.log(">>>>" + red(emptydir));
 test(cyan('Return single item list when supplied an empty (but valid) basedir'), function (t) {
-  listdirs(emptydir, function(err, list){
+  listdirs(emptydir, function(err, list) {
     // console.log(err);
     // var errmsg = "Error: basedir param must be a valid directory."
     t.equal(err, null, green("✓ no errors.") )
@@ -60,7 +60,7 @@ console.log(' '); // blank line for readability
 var fixture = path.join(__dirname +"/fixture");
 // console.log(">>>>" + red(emptydir));
 test(cyan('Return 7-item list when supplied '+fixture), function (t) {
-  listdirs(fixture, function(err, list){
+  listdirs(fixture, function(err, list) {
     // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
     // console.log(list);
     t.equal(err, null, green("✓ no errors.") )
@@ -72,7 +72,7 @@ console.log(' '); // blank line for readability
 });
 
 test(cyan('Return 8-item list when supplied '+__dirname), function (t) {
-  listdirs(__dirname, function(err, list){
+  listdirs(__dirname, function(err, list) {
     console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
     console.log(list);
     t.equal(err, null, green("✓ no errors.") )
@@ -83,16 +83,16 @@ console.log(' '); // blank line for readability
   })
 });
 
-var bonus = path.resolve(__dirname + '/../node_modules/tape');
-test(cyan('Bonus test: '+bonus), function (t) {
-  console.log(cyan("node_modules: ") +bonus);
-  isdir(bonus, function(err, dir) {
-    t.equal(dir, true, green("✓ "+bonus +" is a directory."));
-    listdirs(bonus, function(err2, list) {
-      console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-      console.log(list);
-      t.end();
-    })
-
-  })
-});
+// var bonus = path.resolve(__dirname + '/../node_modules');
+// test(cyan('Bonus test: '+bonus), function (t) {
+//   console.log(cyan("node_modules: ") +bonus);
+//   isdir(bonus, function(err, dir) {
+//     t.equal(dir, true, green("✓ "+bonus +" is a directory."));
+//     listdirs(bonus, function(err2, list) {
+//       // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+//       // console.log(list);
+//       t.end();
+//     })
+//
+//   })
+// });

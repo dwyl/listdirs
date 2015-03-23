@@ -3,6 +3,7 @@ var path  = require('path');
 var isdir = require('isdir');
 var chalk = require('chalk');
 var red = chalk.red, green = chalk.green, cyan = chalk.cyan;
+var failsafe;
 /**
  * listdirs returns a List of Directories given an initial base directory
  * by walking the directory tree and finding all child directories.
@@ -16,6 +17,7 @@ var red = chalk.red, green = chalk.green, cyan = chalk.cyan;
 module.exports = function listdirs(basedir, callback) {
   var list  = []; // the list of dirs we will return
   var count = 1;  // count used to keep track of what we still need to walk
+  var walk  = 0;
 
   function dircheck(fd) {
     isdir(fd, function(err, dir){
@@ -25,7 +27,8 @@ module.exports = function listdirs(basedir, callback) {
           walkdir(fd);
         }
         else {
-          console.log(cyan(count +" | "+fd));
+          console.log(cyan(count +" | "+fd) );
+
           done();
         }
         return count--; // always decrement.
@@ -46,20 +49,27 @@ module.exports = function listdirs(basedir, callback) {
         })
       }
       else {
-        console.log(dir +" is EMPTY! | count: "+count);
+        console.log(dir +" is EMPTY! | count: "+count );
       }
-      console.log(green(count +" | "+dir));
+      // console.log(green(count +" | "+dir) + " | walk: "+walk);
       return done();
     });
   }
 
+  // failsafe = setTimeout(function() {
+  //   callback(null, list);
+  // },5000);
+
   function done() {
-    if(count === 0) {
-      return callback(null, list);
-    }
-    else {
-      // return console.log("Still checking count: "+count);
-    }
+    // setImmediate(function() {
+      if(count === 0) {
+        // clearTimeout(failsafe);
+        return callback(null, list);
+      }
+      else {
+        // return console.log("Still checking count: "+count);
+      }
+    // });
   }
 
   dircheck(basedir); // initial check that basedir is a valid directory
