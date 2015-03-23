@@ -1,6 +1,8 @@
 var fs    = require('fs');
 var path  = require('path');
 var isdir = require('isdir');
+var chalk = require('chalk');
+var red = chalk.red, green = chalk.green, cyan = chalk.cyan;
 /**
  * listdirs returns a List of Directories given an initial base directory
  * by walking the directory tree and finding all child directories.
@@ -23,13 +25,14 @@ module.exports = function listdirs(basedir, callback) {
           walkdir(fd);
         }
         else {
+          console.log(cyan(count +" | "+fd));
           done();
         }
+        return count--; // always decrement.
       }
       else {
         return callback("Error: basedir param must be a valid directory.", list);
       }
-      return count--; // always decrement.
     });
   }
 
@@ -45,6 +48,7 @@ module.exports = function listdirs(basedir, callback) {
       else {
         console.log(dir +" is EMPTY! | count: "+count);
       }
+      console.log(green(count +" | "+dir));
       return done();
     });
   }

@@ -71,14 +71,28 @@ console.log(' '); // blank line for readability
   })
 });
 
-test(cyan('Return 7-item list when supplied '+__dirname), function (t) {
+test(cyan('Return 8-item list when supplied '+__dirname), function (t) {
   listdirs(__dirname, function(err, list){
-    // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-    // console.log(list);
+    console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+    console.log(list);
     t.equal(err, null, green("✓ no errors.") )
     t.equal(list.length, 8, green("✓ "+__dirname + " | list.length is: "+list.length));
 console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
 console.log(' '); // blank line for readability
     t.end();
+  })
+});
+
+var bonus = path.resolve(__dirname + '/../node_modules/tape');
+test(cyan('Bonus test: '+bonus), function (t) {
+  console.log(cyan("node_modules: ") +bonus);
+  isdir(bonus, function(err, dir) {
+    t.equal(dir, true, green("✓ "+bonus +" is a directory."));
+    listdirs(bonus, function(err2, list) {
+      console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+      console.log(list);
+      t.end();
+    })
+
   })
 });
