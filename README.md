@@ -25,7 +25,7 @@ list of all the "child" directories.
 ## How?
 
 ```js
-listdirs(dir, callback(list));
+listdirs(dir, callback(err, list));
 ```
 
 

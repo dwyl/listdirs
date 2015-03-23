@@ -1,10 +1,11 @@
 var test  = require('tape');
 var chalk = require('chalk');
 
-var dirlist = require('../');
+var listdirs = require('../listdirs');
 
-test(chalk.cyan('sync method with valid dir'), function (t) {
-  var dir = isdir(__dirname)
-  t.equal(dir, true, chalk.green("✓ "+__dirname + " is a directory (sync)"));
-  t.end();
+test(chalk.cyan('Return error when supplied invalid base directory'), function (t) {
+  listdirs(__filename, function(err, dirs){
+    t.equal(err, !null, chalk.green("✓ "+__filename + " is NOT a directory. no further action possible."));
+    t.end();
+  })
 });
