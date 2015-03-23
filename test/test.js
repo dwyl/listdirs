@@ -83,16 +83,16 @@ console.log(' '); // blank line for readability
   })
 });
 
-// var bonus = path.resolve(__dirname + '/../node_modules');
-// test(cyan('Bonus test: '+bonus), function (t) {
-//   console.log(cyan("node_modules: ") +bonus);
-//   isdir(bonus, function(err, dir) {
-//     t.equal(dir, true, green("✓ "+bonus +" is a directory."));
-//     listdirs(bonus, function(err2, list) {
-//       // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-//       // console.log(list);
-//       t.end();
-//     })
-//
-//   })
-// });
+var bonus = path.resolve(__dirname + '/../node_modules');
+test(cyan('Bonus test: '+bonus), function (t) {
+  console.log(cyan("node_modules: ") +bonus);
+  isdir(bonus, function(err, dir) {
+    t.equal(dir, true, green("✓ "+bonus +" is a directory."));
+    listdirs(bonus, function(err2, list) {
+      // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+      // console.log(list);
+      t.end();
+    })
+
+  })
+});

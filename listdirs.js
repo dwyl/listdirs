@@ -1,9 +1,6 @@
 var fs    = require('fs');
 var path  = require('path');
 var isdir = require('isdir');
-var chalk = require('chalk');
-var red = chalk.red, green = chalk.green, cyan = chalk.cyan;
-var failsafe;
 /**
  * listdirs returns a List of Directories given an initial base directory
  * by walking the directory tree and finding all child directories.
@@ -27,11 +24,9 @@ module.exports = function listdirs(basedir, callback) {
           walkdir(fd);
         }
         else {
-          console.log(cyan(count +" | "+fd) );
-
-          done();
+          count--;
+          return done();
         }
-        return count--; // always decrement.
       }
       else {
         return callback("Error: basedir param must be a valid directory.", list);
@@ -41,7 +36,7 @@ module.exports = function listdirs(basedir, callback) {
 
   function walkdir(dir) {
     fs.readdir(dir, function(err, files) {
-      count = count + files.length;
+      count = count - 1 + files.length;
       if(count > 0) {
         files.map(function(file) {
           var fd = path.resolve(dir + '/' + file);
@@ -49,27 +44,19 @@ module.exports = function listdirs(basedir, callback) {
         })
       }
       else {
-        console.log(dir +" is EMPTY! | count: "+count );
+        // console.log(dir +" is EMPTY! | count: "+count );
       }
-      // console.log(green(count +" | "+dir) + " | walk: "+walk);
       return done();
     });
   }
 
-  // failsafe = setTimeout(function() {
-  //   callback(null, list);
-  // },5000);
-
   function done() {
-    // setImmediate(function() {
       if(count === 0) {
-        // clearTimeout(failsafe);
         return callback(null, list);
       }
       else {
         // return console.log("Still checking count: "+count);
       }
-    // });
   }
 
   dircheck(basedir); // initial check that basedir is a valid directory
