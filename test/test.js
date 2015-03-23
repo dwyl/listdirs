@@ -75,6 +75,7 @@ test(cyan('Bonus test: '+bonus), function (t) {
   isdir(bonus, function(err, dir) {
     t.equal(dir, true, green("✓ "+bonus +" is a directory."));
     listdirs(bonus, function(err2, list) {
+      t.true(list.length > 400, green("✓ "+bonus + " | list.length is: "+list.length));
       t.end();
     })
 

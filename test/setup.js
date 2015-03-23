@@ -1,7 +1,5 @@
 // create a tree of directories using https://github.com/substack/node-mkdirp
 var mkdirp   = require('mkdirp');
-// delete the temporary directory tree using https://github.com/isaacs/rimraf
-// var rimraf   = require('rimraf');
 var fs       = require('fs');
 var path     = require('path');
 var chalk    = require('chalk');
@@ -79,24 +77,20 @@ var setup = function(callback) {
   });
 }
 
+module.exports = setup;
+
+// setup(function(){
+//   console.log("DONE!!");
+// })
+
+// delete the temporary directory tree using https://github.com/isaacs/rimraf
+// var rimraf   = require('rimraf');
+
 // var teardown = function(callback) {
 //   rimraf(rootdir, function() {
 //     callback();
 //   })
 // }
-
-// module.exports = {
-//   setup    : setup,     // export these methods for use in the test
-//   teardown : teardown,
-//   filename : filename,  // we will update this in our test
-//   rootdir  : rootdir,   // and add a file to this dir
-//   dirtree  : dirtree,   // and add a file to the grandchild dir
-//   empty    : empty      // empty dir
-// }
-module.exports = setup;
-// setup(function(){
-//   console.log("DONE!!");
-// })
 // teardown(function(){
 //   console.log("DONE!!");
 // })
