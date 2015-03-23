@@ -1,6 +1,6 @@
 {
   "name": "listdirs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "List all directories recursively given an inital directory",
   "main": "listdirs.js",
   "directories": {
@@ -11,7 +11,7 @@
     "test": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore .",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=440c7204766b2a7607c350f7bf853dd508144305408e66b5921d4adf000a76c8 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=ee15cc1e740638c273889ceb2cf1e3b2769697a6860760ba40c4df328e2a5a90 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
