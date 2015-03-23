@@ -51,8 +51,8 @@ test(cyan('Return single item list when supplied an empty (but valid) basedir'),
     // var errmsg = "Error: basedir param must be a valid directory."
     t.equal(err, null, green("✓ no errors.") )
     t.equal(list.length, 1, green("✓ "+emptydir + " is empty so "+list.length +" is 1."));
-console.log(' '); // blank line for readability
 console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
+console.log(' '); // blank line for readability
     t.end();
   })
 });
@@ -61,12 +61,24 @@ var fixture = path.join(__dirname +"/fixture");
 // console.log(">>>>" + red(emptydir));
 test(cyan('Return 7-item list when supplied '+fixture), function (t) {
   listdirs(fixture, function(err, list){
-    console.log(cyan(" - - - - - - - - - - - - - - - - - - - - "));
-    console.log(list);
-    console.log(cyan(" - - - - - - - - - - - - - - - - - - - - "));
-    // var errmsg = "Error: basedir param must be a valid directory."
-    // t.equal(err, null, green("✓ no errors.") )
-    t.equal(list.length, 7, green("✓ "+fixture + " | " +list.length +" is 7."));
+    // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+    // console.log(list);
+    t.equal(err, null, green("✓ no errors.") )
+    t.equal(list.length, 7, green("✓ "+fixture + " | list.length is: "+list.length));
+console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
+console.log(' '); // blank line for readability
+    t.end();
+  })
+});
+
+test(cyan('Return 7-item list when supplied '+__dirname), function (t) {
+  listdirs(__dirname, function(err, list){
+    // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
+    // console.log(list);
+    t.equal(err, null, green("✓ no errors.") )
+    t.equal(list.length, 8, green("✓ "+__dirname + " | list.length is: "+list.length));
+console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
+console.log(' '); // blank line for readability
     t.end();
   })
 });
