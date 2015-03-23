@@ -16,50 +16,59 @@ var red = chalk.red, green = chalk.green.bold, cyan =chalk.cyan.bold;
 module.exports = function listdirs(basedir, callback) {
   var list  = []; // the list of dirs we will return
   var count = 1;
+  var walking = 1;
 
   function dircheck(fd) {
-    console.log(cyan(count) + " | checking: "+fd);
     isdir(fd, function(err, dir){
       if(!err) {
-        count--;
         if(dir) {
+          console.log(cyan(fd)+" directory found! walkdir - - - - - - - - - - - - - - -")
           list.push(fd);
-          return walkdir(fd);
+          count++;
+          walkdir(fd);
         }
         else {
-          return done();
+          console.log(red("Dead end. "+fd +" not a directory ") + cyan("count: "+count));
+          done();
         }
+        // return count--;
       }
       else {
         console.log(red(">>>>>>>>>>>>>    ERROR: "+fd +" <<<<<<<<<<<<<< "));
         return callback("Error: basedir param must be a valid directory.", list);
       }
+      count--;
+      return console.log(cyan(count) + " | checking: "+fd);
     });
   }
-  console.log(' '); // blank line for readability
   console.log(">>> basedir: "+basedir);
   dircheck(basedir); // initial check for basedir is valid directory
 
   function walkdir(dir) {
+    walking++;
     fs.readdir(dir, function(err, files) {
       var filecount = files.length;
-      console.log(cyan(filecount), files);
-      count = count + filecount;
-      if(filecount === 0) {
-        return done();
+      count = count - 1 + filecount;
+      console.log(cyan(filecount), "| ", red(count), files);
+      if(filecount > 0) {
+        files.map(function(file) {
+          var fd = path.resolve(dir + '/' + file);
+          return dircheck(fd);
+        })
+        // for(var i = filecount; i > 0; i--) {
+        //
+        // }
       }
       else {
-        for(var i = filecount; i > 0; i--) {
-          var fd = path.resolve(dir + '/' + files[i-1]);
-          dircheck(fd);
-        }
+        console.log(red("Dead end. "+dir +" is empty ") + cyan("count: "+count));
       }
+      return done();
     });
   }
 
   function done() {
     if(count === 0) {
-      console.log(green("done! count: "+count));
+      console.log(green("count: "+count + " > Done"));
       return callback(null, list);
     }
     else {

@@ -27,25 +27,33 @@ tmp/
 
 var setup = function(callback) {
   mkdirp(empty, function(err){
-    if (err) console.error(err)
+    if (err) {
+      console.error(err)
+    }
   })
 
   mkdirp(rootdir+"/foo/bit", function(err){
-    if (err) console.error(err)
+    if (err) {
+      console.error(err)
+    }
   })
 
   mkdirp(rootdir+"/foo/bat", function(err){
-    if (err) console.error(err)
+    if (err) {
+      console.error(err)
+    }
   })
 
 
   mkdirp(dirtree, function (err) {
-    if (err) console.error(err)
+    if (err) {
+      console.error(err)
+    }
     // else console.log('pow!')
 
     // create a file that will be *Modified* in our test
-    var filepath = path.join(rootdir+'/hi.js')
-    fs.writeFile(filepath, "alert('hi!');", function(err) {
+    var filepath = path.join(rootdir+'/hi.go')
+    fs.writeFile(filepath, 'fmt.Println("hello world")', function(err) {
       if(err) {
         return console.log(err, filepath);
       }
@@ -60,8 +68,8 @@ var setup = function(callback) {
       callback();
     });
 
-    var filepath3 = rootdir+'/foo/bye.js'
-    fs.writeFile(filepath3, "alert('bye!');", function(err) {
+    var filepath3 = rootdir+'/foo/bye.c'
+    fs.writeFile(filepath3, "printf 'bye'; ", function(err) {
       if(err) {
         return console.log(err, filepath3);
       }
