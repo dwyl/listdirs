@@ -44,41 +44,27 @@ test(cyan('Return error when supplied invalid base directory'), function (t) {
 });
 
 var emptydir = path.join(__dirname +"/fixture/foo/bar/baz/empty");
-// console.log(">>>>" + red(emptydir));
 test(cyan('Return single item list when supplied an empty (but valid) basedir'), function (t) {
   listdirs(emptydir, function(err, list) {
-    // console.log(err);
-    // var errmsg = "Error: basedir param must be a valid directory."
     t.equal(err, null, green("✓ no errors.") )
     t.equal(list.length, 1, green("✓ "+emptydir + " is empty so "+list.length +" is 1."));
-console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-console.log(' '); // blank line for readability
     t.end();
   })
 });
 
 var fixture = path.join(__dirname +"/fixture");
-// console.log(">>>>" + red(emptydir));
 test(cyan('Return 7-item list when supplied '+fixture), function (t) {
   listdirs(fixture, function(err, list) {
-    // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-    // console.log(list);
     t.equal(err, null, green("✓ no errors.") )
     t.equal(list.length, 7, green("✓ "+fixture + " | list.length is: "+list.length));
-console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-console.log(' '); // blank line for readability
     t.end();
   })
 });
 
 test(cyan('Return 8-item list when supplied '+__dirname), function (t) {
   listdirs(__dirname, function(err, list) {
-    console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-    console.log(list);
     t.equal(err, null, green("✓ no errors.") )
     t.equal(list.length, 8, green("✓ "+__dirname + " | list.length is: "+list.length));
-console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-console.log(' '); // blank line for readability
     t.end();
   })
 });
@@ -89,8 +75,6 @@ test(cyan('Bonus test: '+bonus), function (t) {
   isdir(bonus, function(err, dir) {
     t.equal(dir, true, green("✓ "+bonus +" is a directory."));
     listdirs(bonus, function(err2, list) {
-      // console.log(cyan(" - - - - - - - - - - - - - - - - - - - - list: "));
-      // console.log(list);
       t.end();
     })
 
