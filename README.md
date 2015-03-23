@@ -28,6 +28,8 @@ list of all the "child" directories.
 listdirs(dir, callback(err, list));
 ```
 
+### No Async (module)
+
 
 ## Research
 

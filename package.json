@@ -33,7 +33,9 @@
     "codeclimate-test-reporter": "0.0.4",
     "istanbul": "^0.3.4",
     "jshint": "^2.5.10",
+    "mkdirp": "^0.5.0",
     "pre-commit": "0.0.9",
+    "rimraf": "^2.3.2",
     "tape": "^3.0.3"
   },
   "pre-commit": [
@@ -43,5 +45,8 @@
   ],
   "engines": {
     "node": ">=0.10"
+  },
+  "dependencies": {
+    "isdir": "^2.0.0"
   }
 }
