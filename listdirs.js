@@ -1,5 +1,4 @@
 var fs    = require('fs');
-var path  = require('path');
 var isdir = require('isdir');
 /**
  * listdirs returns a List of Directories given an initial base directory
@@ -39,8 +38,7 @@ module.exports = function listdirs(basedir, callback) {
       count = count - 1; // subtract the parent directory from the count
       if(count > 0) {
         files.forEach(function(file) { // itterate over the files in the dir
-          var fd = path.resolve(dir + '/' + file);
-          return dircheck(fd);
+          return dircheck(dir + '/' + file);
         })
       }
       else { // directory was empty so we are done walking it!
