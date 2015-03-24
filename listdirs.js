@@ -14,7 +14,6 @@ var isdir = require('isdir');
 module.exports = function listdirs(basedir, callback) {
   var list  = []; // the list of dirs we will return
   var count = 1;  // count used to keep track of what we still need to walk
-  var walk  = 0;
 
   function dircheck(fd) {
     isdir(fd, function(err, dir){
