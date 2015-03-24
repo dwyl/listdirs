@@ -37,15 +37,15 @@ module.exports = function listdirs(basedir, callback) {
     fs.readdir(dir, function(err, files) {
       count = count - 1 + files.length;
       if(count > 0) {
-        files.map(function(file) {
+        files.forEach(function(file) {
           var fd = path.resolve(dir + '/' + file);
           return dircheck(fd);
         })
       }
-      else {
-        // console.log(dir +" is EMPTY! | count: "+count );
+      else { // directory was empty so we are done walking it!
+        return done();
       }
-      return done();
+
     });
   }
 
@@ -53,7 +53,7 @@ module.exports = function listdirs(basedir, callback) {
       if(count === 0) {
         return callback(null, list);
       }
-      else {
+      else { // we still have outstanding walk ops, so can't callback.
         // return console.log("Still checking count: "+count);
       }
   }
