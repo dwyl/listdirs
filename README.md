@@ -11,7 +11,7 @@
 
 ## Why?
 
-We needed an easy way of listing all the directories in a project
+We needed an *easy* way of listing all the directories in a project
 so we could watch them for changes.  
 We reviewed *many* available options and found them lacking in
 one of the following areas:
@@ -55,26 +55,37 @@ listdirs(basedir, function callback(err, list){
 
 ## Research
 
-+ **nodejs-walker**: https://github.com/daaku/nodejs-walker unclear docs.
-+ **dirtree**: https://www.npmjs.com/package/dirtree comes *really* close
-to what we want! except it returns a tree object where we want a simple array.
-+ **dirs**: https://github.com/jonschlinkert/dirs
-unclear docs. uses [*async*](https://github.com/caolan/async) (=== lazy).
-
 ### Asynchronous (non-blocking) without *Async* (the module)
 
-The [*async*](https://github.com/caolan/async) is good
+The [*async*](https://github.com/caolan/async) (module) is *good*
 (as evidenced by its popularity!)  
-But *way* too many people use it as a crutch instead of *understanding*
+But *way* too many people use it as a *crutch* instead of *understanding*
 how to write their own asynchronous code.  
 We have *deliberately* avoided using *async* (the module) here,
-and as a result, this module is *faster* (we benchmarked it!)
+and as a result, **listdirs** is *faster* (we benchmarked it!)
 and includes *less bloat*.
 
 We have included ***one dependency*** on
 [**isdir**](https://www.npmjs.com/package/isdir)
 for the sake of splitting out code into "does-only-one-thing" (micro-modules)
 but **isdir** has ***zero dependencies*** so we know the stack!
+
+### Others
+
+As usual, a search on NPM (for [***list directories***](https://www.npmjs.com/search?q=list+directories)) returns *many* results:
+
+![npm-search-list-directories](https://cloud.githubusercontent.com/assets/194400/6801341/ae492dd6-d21e-11e4-8b93-276e1853b8f5.png)
+
+
+A few of the modules we looked at before deciding to write our own:
+
++ **nodejs-walker**: https://github.com/daaku/nodejs-walker unclear docs.
++ **dirtree**: https://www.npmjs.com/package/dirtree comes *really* close
+to what we want! except it returns a tree object where we want a simple array.
++ **dirs**: https://github.com/jonschlinkert/dirs
+unclear docs. uses [*async*](https://github.com/caolan/async) (=== lazy).
++ dirlist: https://www.npmjs.com/package/dirlist (is a directory listing
+  server - not a utility module)
 
 [node-version-image]: https://img.shields.io/node/v/listdirs.svg?style=flat
 [node-version-url]: http://nodejs.org/download/
