@@ -1,13 +1,17 @@
 {
   "name": "listdirs",
-  "version": "1.0.0",
-  "description": "List all directories recursively",
-  "main": "index.js",
+  "version": "1.0.2",
+  "description": "List all directories recursively given an inital directory",
+  "main": "listdirs.js",
   "directories": {
-    "example": "examples"
+    "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "quick": "./node_modules/tape/bin/tape ./test/*.js",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore .",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=ee15cc1e740638c273889ceb2cf1e3b2769697a6860760ba40c4df328e2a5a90 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,25 @@
   "bugs": {
     "url": "https://github.com/ideaq/listdirs/issues"
   },
-  "homepage": "https://github.com/ideaq/listdirs"
+  "homepage": "https://github.com/ideaq/listdirs",
+  "devDependencies": {
+    "chalk": "^1.0.0",
+    "codeclimate-test-reporter": "0.0.4",
+    "istanbul": "^0.3.4",
+    "jshint": "^2.5.10",
+    "mkdirp": "^0.5.0",
+    "pre-commit": "0.0.9",
+    "tape": "^3.0.3"
+  },
+  "pre-commit": [
+    "jshint",
+    "coverage",
+    "codeclimate"
+  ],
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "isdir": "^2.0.0"
+  }
 }
