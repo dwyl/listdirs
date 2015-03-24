@@ -20,6 +20,8 @@ one of the following areas:
 2. **Patchy documentation** (*often none*)
 3. **Unmaintained** or Abandoned (many open/unaddressed issues on GitHub)
 4. **Unclear** code (written without [*shoshin*](http://en.wikipedia.org/wiki/Shoshin))
+5. **Too Many Features** trying to do too much. (we only need ***one thing***
+  a list of the directories)
 
 ![too many features](http://i.imgur.com/ap0tuHe.gif)
 
@@ -70,7 +72,7 @@ We have included ***one dependency*** on
 for the sake of splitting out code into "does-only-one-thing" (micro-modules)
 but **isdir** has ***zero dependencies*** so we know the stack!
 
-### Others
+### Existing Options
 
 As usual, a search on NPM (for [***list directories***](https://www.npmjs.com/search?q=list+directories)) returns *many* results:
 
@@ -86,6 +88,12 @@ to what we want! except it returns a tree object where we want a simple array.
 unclear docs. uses [*async*](https://github.com/caolan/async) (=== lazy).
 + dirlist: https://www.npmjs.com/package/dirlist (is a directory listing
   server - not a utility module)
+
+### Background Reading
+
+Highly recommend reading the **Unix Philosophy** if you haven't already.
+
+> + ***17 Unix Rules***: http://en.wikipedia.org/wiki/Unix_philosophy#Eric_Raymond.E2.80.99s_17_Unix_Rules
 
 [node-version-image]: https://img.shields.io/node/v/listdirs.svg?style=flat
 [node-version-url]: http://nodejs.org/download/
