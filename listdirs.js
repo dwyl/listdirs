@@ -35,9 +35,10 @@ module.exports = function listdirs(basedir, callback) {
 
   function walkdir(dir) {
     fs.readdir(dir, function(err, files) {
-      count = count - 1 + files.length;
+      count = count + files.length; // increase the count by the number of files
+      count = count - 1; // subtract the parent directory from the count
       if(count > 0) {
-        files.forEach(function(file) {
+        files.forEach(function(file) { // itterate over the files in the dir
           var fd = path.resolve(dir + '/' + file);
           return dircheck(fd);
         })
