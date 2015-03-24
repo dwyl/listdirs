@@ -38,10 +38,10 @@ module.exports = function listdirs(basedir, callback) {
       count = count + files.length; // increase the count by the number of files
       count = count - 1; // subtract the parent directory from the count
       if(count > 0) {
-        files.forEach(function(file) { // itterate over the files in the dir
-          var fd = path.resolve(dir + '/' + file);
+        for (var i = 0, len = files.length; i < len; i++) {
+          var fd = path.resolve(dir + '/' + files[i]);
           return dircheck(fd);
-        })
+        }
       }
       else { // directory was empty so we are done walking it!
         return done();

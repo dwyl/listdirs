@@ -1,6 +1,6 @@
 {
   "name": "listdirs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "List all directories recursively given an inital directory",
   "main": "listdirs.js",
   "directories": {
