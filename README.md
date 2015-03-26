@@ -31,7 +31,7 @@ one of the following areas:
 Given an initial directory (e.g. the [Current Working Directory](http://en.wikipedia.org/wiki/Working_directory)) give me a
 list of all the "child" directories.
 
-## How? (usage)
+## How? (Usage)
 
 ### Install from NPM
 
@@ -39,7 +39,7 @@ list of all the "child" directories.
 npm install listdirs --save
 ```
 
-Then in your code:
+### In your code:
 
 ```js
 var listdirs = require('listdirs');
@@ -54,6 +54,31 @@ listdirs(basedir, function callback(err, list){
 });
 ```
 
+#### (*Optional*) Supply a List of Files/Directories to *Ignore*
+
+If you have a large project and want to ignore the files in your
+.gitignore file (e.g. **node_modules**), there's an *easy* way to do this:
+
+```js
+var listdirs = require('listdirs');
+var ignored  = require('ignored')('./.gitignore'); // https://github.com/nelsonic/ignored
+var basedir  = __dirname; // or which ever base directory you prefer
+listdirs(basedir, function callback(err, list){
+    if(err){
+      console.log(err); // handle errors in your preferred way.
+    }
+    else {
+      console.log(list); // use the array of directories as required.
+    }
+}, ignored); // include ignored list as 3rd Parameter (after callback)
+```
+
+***Note***: This example uses our **ignored** module: https://www.npmjs.com/package/ignored
+as an *optional* helper to list the entries in **.gitignore** file  
+but you can supply your list of ignored files as a simple array
+e.g: `var ignored = ['node_modules', '.git', '.vagrant', 'etc.'];`
+
+<br />
 
 ## Research
 
