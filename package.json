@@ -10,12 +10,11 @@
     "quick": "./node_modules/tape/bin/tape ./test/*.js",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
-    "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore .",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=ee15cc1e740638c273889ceb2cf1e3b2769697a6860760ba40c4df328e2a5a90 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info"
+    "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc --exclude-path .gitignore ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ideaq/listdirs.git"
+    "url": "https://github.com/dwyl/listdirs.git"
   },
   "keywords": [
     "List",
@@ -25,9 +24,9 @@
   "author": "@nelsonic <contact.nelsonic@gmail.com> (https://github.com/nelsonic)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ideaq/listdirs/issues"
+    "url": "https://github.com/dwyl/listdirs/issues"
   },
-  "homepage": "https://github.com/ideaq/listdirs",
+  "homepage": "https://github.com/dwyl/listdirs",
   "devDependencies": {
     "chalk": "^1.0.0",
     "codeclimate-test-reporter": "0.0.4",
@@ -40,8 +39,7 @@
   },
   "pre-commit": [
     "jshint",
-    "coverage",
-    "codeclimate"
+    "coverage"
   ],
   "engines": {
     "node": ">=0.10"
