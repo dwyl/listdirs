@@ -2,12 +2,12 @@
 
 **List Dir**ectorie**s** ***asynchronously*** in node.js.
 
-[![Build Status](https://travis-ci.org/ideaq/listdirs.svg)](https://travis-ci.org/ideaq/listdirs)
-[![Code Climate](https://codeclimate.com/github/ideaq/listdirs/badges/gpa.svg)](https://codeclimate.com/github/ideaq/listdirs)
-[![Test Coverage](https://codeclimate.com/github/ideaq/listdirs/badges/coverage.svg)](https://codeclimate.com/github/ideaq/listdirs)
+[![Build Status](https://travis-ci.org/dwyl/listdirs.svg)](https://travis-ci.org/dwyl/listdirs)
+[![Code Climate](https://codeclimate.com/github/dwyl/listdirs/badges/gpa.svg)](https://codeclimate.com/github/dwyl/listdirs)
+[![Test Coverage](https://codeclimate.com/github/dwyl/listdirs/badges/coverage.svg)](https://codeclimate.com/github/dwyl/listdirs)
 [![npm version](https://badge.fury.io/js/listdirs.svg)](http://badge.fury.io/js/listdirs)
 [![Node.js Version][node-version-image]][node-version-url]
-[![Dependency Status](https://david-dm.org/ideaq/listdirs.svg)](https://david-dm.org/ideaq/listdirs)
+[![Dependency Status](https://david-dm.org/dwyl/listdirs.svg)](https://david-dm.org/dwyl/listdirs)
 
 ## Why?
 
