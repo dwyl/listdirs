@@ -25,7 +25,7 @@ var fixture = path.join(__dirname+'/fixture')
 test(cyan('Setup the '+red(fixture)+' directory tree for testing'), function(t) {
   setup(function(){
     isdir(fixture, function(err, dir) {
-      t.equal(dir, true, green("✓ "+fixture +" was created."));
+      t.equal(dir, true, green("✓ " + fixture + " was created."));
       t.end();
     })
   })
@@ -38,7 +38,8 @@ test(cyan('Return error when supplied invalid base directory'), function (t) {
     console.log(err);
     var errmsg = "Error: basedir param must be a valid directory"
     t.equal(err, errmsg, green("✓ ")+ red(errmsg) +green(" (as expected!)") )
-    t.equal(list.length, 0, green("✓ "+invalid + " is NOT a directory. no further action possible."));
+    t.equal(list.length, 0,
+      green("✓ "+invalid + " is NOT a directory. no further action possible."));
     t.end();
   })
 });
@@ -76,7 +77,7 @@ test(cyan('Bonus test: '+bonus), function (t) {
     t.equal(dir, true, green("✓ "+bonus +" is a directory."));
     listdirs(bonus, function(err2, list) {
       t.true(list.length > 100,
-        green("✓ "+bonus + " | list.length is: "+list.length));
+        green("✓ "+ bonus + " | list.length is: "+list.length));
       t.end();
     })
 
