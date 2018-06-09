@@ -1,6 +1,6 @@
 # listdirs
 
-**List Dir**ectorie**s** ***async***hronously in node.js
+**List Dir**ectorie**s** ***asynchronously*** in node.js.
 
 [![Build Status](https://travis-ci.org/ideaq/listdirs.svg)](https://travis-ci.org/ideaq/listdirs)
 [![Code Climate](https://codeclimate.com/github/ideaq/listdirs/badges/gpa.svg)](https://codeclimate.com/github/ideaq/listdirs)
