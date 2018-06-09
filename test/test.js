@@ -36,7 +36,7 @@ var invalid = path.join(__dirname +"/invalid");
 test(cyan('Return error when supplied invalid base directory'), function (t) {
   listdirs(invalid, function(err, list){
     console.log(err);
-    var errmsg = "Error: basedir param must be a valid directory."
+    var errmsg = "Error: basedir param must be a valid directory"
     t.equal(err, errmsg, green("✓ ")+ red(errmsg) +green(" (as expected!)") )
     t.equal(list.length, 0, green("✓ "+invalid + " is NOT a directory. no further action possible."));
     t.end();
