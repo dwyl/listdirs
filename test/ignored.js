@@ -8,7 +8,8 @@ ignored.push('.git'); // ignore the .git dir
 // console.log(ignored);
 var basedir = path.resolve(__dirname +'/../')
 
-test(cyan('List: ' +basedir+' supplying IGNORED list (.gitignore file)'), function (t) {
+test(cyan('List: ' + basedir
++ ' supplying IGNORED list (.gitignore file)'), function (t) {
   listdirs(basedir, function(err, list) {
     console.log(cyan(" - - - - - - - - - - - - - - - - - - - - - - - - - "));
     console.log(list)
@@ -21,12 +22,15 @@ test(cyan('List: ' +basedir+' supplying IGNORED list (.gitignore file)'), functi
       }
     });
     t.true(!found, "✓ List does NOT contain node_modules")
-    t.true(list.length < 10, green("✓ List contains " + red(list.length) + " dirs when ignored list supplied."));
+    t.true(list.length < 10,
+      green("✓ List contains " + red(list.length)
+      + " dirs when ignored list supplied."));
     t.end();
   }, ignored);
 });
 
-test(cyan('List: ' +basedir+' without supplying ignored list (.gitignore file)'), function (t) {
+test(cyan('List: ' + basedir
++ ' without supplying ignored list (.gitignore file)'), function (t) {
   listdirs(basedir, function(err, list) {
     var found = false;
     list.forEach(function(item) { // search through list of items for node_modules
@@ -35,7 +39,9 @@ test(cyan('List: ' +basedir+' without supplying ignored list (.gitignore file)')
         t.true(found, "✓ " + cyan(item) + " in List contains node_modules")
       }
     });
-    t.true(list.length > 400, green("✓ List contains " + red(list.length) + " dirs when NO IGNORED LIST Supplied."));
+    t.true(list.length > 100,
+      green("✓ List contains " + red(list.length)
+      + " dirs when NO IGNORED LIST Supplied."));
     t.end();
   });
 });
